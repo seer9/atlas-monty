@@ -1,6 +1,6 @@
-run = "run"
+run = "./monty.c"
 [nix]
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "run"]
+run = ["sh", "-c", "./monty.c"]

@@ -35,11 +35,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* opcodes */
+
 void push(stack_t **stack, unsigned int line_number, char *arg);
 void pall(stack_t **stack);
-
-/* interpeter functions */
 int val_int(const char *str);
+int is_integer(const char *str);
 
 #endif
