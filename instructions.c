@@ -1,33 +1,26 @@
 #include "monty.h"
-/**
- * exe_instruction - Executes the instruction
- *
- * @opcode: The opcode
- * @arg: The argument
- * @stack: Pointer to the stack
- * @line_number: The line number
- */
+#include <string.h>
+
+typedef void (*opcode_func_t)(stack_t **stack, unsigned int line_number, char *arg);
+
 void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line_number)
 {
     int i;
-    instruction_t instructions[] = {
-        {"push", (void (*)(stack_t **, unsigned int)) push},
-        {"pall", pall},
-        {"pint", pint},
-        {"pop", pop},
-        {"swap", swap},
-        {"add", add},
-        {"nop", nop},
-        {NULL, NULL}
+    char *opcodes[] = {"push", "pall", "pint", "pop", "swap", "add", "nop", NULL};
+    opcode_func_t functions[] = {
+        push,
+        (opcode_func_t) pall,
+        (opcode_func_t) pint,
+        (opcode_func_t) pop,
+        (opcode_func_t) swap,
+        (opcode_func_t) add,
+        (opcode_func_t) nop
     };
-    for (i = 0; instructions[i].opcode != NULL; i++)
+    for (i = 0; opcodes[i] != NULL; i++)
     {
-        if (strcmp(opcode, instructions[i].opcode) == 0)
+        if (strcmp(opcodes[i], opcode) == 0)
         {
-            if (strcmp(opcode, "push") == 0)
-                push(stack, line_number, arg);
-            else
-                instructions[i].f(stack, line_number);
+            functions[i](stack, line_number, arg);
             return;
         }
     }
