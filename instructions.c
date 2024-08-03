@@ -2,20 +2,11 @@
 #include <string.h>
 
 /* Global variable for push argument */
-char *push_arg; // Ensure this is declared once at top-level file scope
+char *push_arg;
 
-/**
- * push_wrapper - wrapper function to call push with an additional argument
- * @stack: pointer to the head of the stack
- * @line_number: the current line number
- * This wrapper function allows push to be used in the instruction_set array.
- */
-void push_wrapper(stack_t **stack, unsigned int line_number) {
-    push(stack, line_number, push_arg);
-}
 
-/* Define the instruction array named "instruction_set" */
-instruction_t instruction_set[] = {
+/* Define the instruction array named "instruct" */
+instruction_t instruct[] = {
     {"push", push_wrapper},
     {"pall", pall},
     {"pint", pint},
@@ -38,15 +29,24 @@ void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line
     int i;
     push_arg = arg;
 
-    for (i = 0; instruction_set[i].opcode != NULL; i++)
+    for (i = 0; instruct[i].opcode != NULL; i++)
     {
-        if (strcmp(instruction_set[i].opcode, opcode) == 0)
+        if (strcmp(instruct[i].opcode, opcode) == 0)
         {
-            instruction_set[i].f(stack, line_number);
+            instruct[i].f(stack, line_number);
             return;
         }
     }
 
     fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
     exit(EXIT_FAILURE);
+}
+
+/**
+ * push_wrapper - wrapper function to call push with an additional argument
+ * @stack: pointer to the head of the stack
+ * @line_number: the current line number
+ */
+void push_wrapper(stack_t **stack, unsigned int line_number) {
+    push(stack, line_number, push_arg);
 }
