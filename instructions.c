@@ -3,7 +3,7 @@
 
 /* Defining the array named "instruct" */
 instruction_t instruct[] = {
-    {"push", push_wrapper},
+    {"push", wrapper},
     {"pall", pall},
     {"pint", pint},
     {"pop", pop},
