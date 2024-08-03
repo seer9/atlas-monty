@@ -10,6 +10,7 @@ void push(stack_t **stack, unsigned int line_number, char *arg)
 {
     int n;
     stack_t *new_node;
+
     if (!is_integer(arg))
     {
         fprintf(stderr, "L%u: usage: push integer\n", line_number);
@@ -25,9 +26,9 @@ void push(stack_t **stack, unsigned int line_number, char *arg)
     new_node->n = n;
     new_node->prev = NULL;
     new_node->next = *stack;
-    
-  if (*stack != NULL)
+
+    if (*stack != NULL)
         (*stack)->prev = new_node;
-    
-  *stack = new_node;
+
+    *stack = new_node;
 }
