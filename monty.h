@@ -35,11 +35,15 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
+/* Function Prototypes */
 void push(stack_t **stack, unsigned int line_number, char *arg);
-void pall(stack_t **stack);
-int val_int(const char *str);
+void pall(stack_t **stack, unsigned int line_number);
 int is_integer(const char *str);
 void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 #endif
