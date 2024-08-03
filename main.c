@@ -1,12 +1,6 @@
 #include "monty.h"
 
-/**
- * main - Entry point
- *
- * argc: number of arguments
- * argv: array of arguments
- * Return: 0 on success, 1 on failure
- */
+char *push_arg; // Declare a global variable to store the push argument
 
 int main(int argc, char **argv)
 {
