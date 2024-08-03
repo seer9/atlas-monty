@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char *push_arg; // Declare a global variable to store the push argument
+char *push_arg; /* global variable to store the push argument */
 
 int main(int argc, char **argv)
 {
@@ -31,13 +31,13 @@ int main(int argc, char **argv)
 
         if (opcode && opcode[0] != '#')  // Ignore empty lines and comments
         {
-            exe_instruction(opcode, arg, &stack, line_number);
+            exe_instruct(opcode, arg, &stack, line_number);
         }
     }
 
     free(line);
     fclose(file);
-    free_stack(stack);  // Ensure all stack elements are freed
+    free_stack(stack);  // Ensure stack is freed properly
     return (0);
 }
 

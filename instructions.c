@@ -1,9 +1,22 @@
 #include "monty.h"
-#include <string.h>
+
+/* Global variable for push argument */
+char *push_arg;
+
+/**
+ * wrapper4push - wrapper function to call push with an additional argument
+ * @stack: pointer to the head of the stack
+ * @line_number: the current line number
+ * This wrapper function allows push to be used in the instruct array.
+ */
+void wrapper4push(stack_t **stack, unsigned int line_number) 
+{
+    push(stack, line_number, push_arg);
+}
 
 /* Defining the array named "instruct" */
 instruction_t instruct[] = {
-    {"push", wrapper},
+    {"push", wrapper4push},
     {"pall", pall},
     {"pint", pint},
     {"pop", pop},
@@ -12,28 +25,17 @@ instruction_t instruct[] = {
     {"nop", nop},
     {NULL, NULL}
 };
+
 /**
- * wrapper - wrapper function to call push with an additional argument
- * @stack: pointer to the head of the stack
- * @line_number: the current line number
- * This wrapper function allows push to be used in the instruct array.
- */
-void wrapper(stack_t **stack, unsigned int line_number)
-{
-    extern char *push_arg; /* global variable to store the push argument */
-    push(stack, line_number, push_arg);
-}
-/**
- * exe_instruction - executes the given opcode
+ * exe_instruct - executes the given opcode
  * @opcode: string representing the opcode
  * @arg: argument for the opcode (if any)
  * @stack: pointer to the head of the stack
  * @line_number: the current line number
  */
-void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line_number)
+void exe_instruct(char *opcode, char *arg, stack_t **stack, unsigned int line_number)
 {
     int i;
-    extern char *push_arg; /* global variable to store the push argument */
     push_arg = arg;
 
     for (i = 0; instruct[i].opcode != NULL; i++)
