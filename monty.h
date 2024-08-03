@@ -35,6 +35,10 @@ typedef struct instruction_s
     void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* Global variable for push argument */
+extern char *push_arg;
+
+/* Function Prototypes */
 void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line_number);
 int is_integer(const char *str);
 void push(stack_t **stack, unsigned int line_number, char *arg);
@@ -45,5 +49,6 @@ void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
+void wrapper4push(stack_t **stack, unsigned int line_number);
 
 #endif
