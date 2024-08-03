@@ -39,7 +39,7 @@ typedef struct instruction_s
 extern char *push_arg;
 
 /* Function Prototypes */
-void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line_number);
+void exe_instruct(char *opcode, char *arg, stack_t **stack, unsigned int line_number);
 int is_integer(const char *str);
 void push(stack_t **stack, unsigned int line_number, char *arg);
 void pall(stack_t **stack, unsigned int line_number);
