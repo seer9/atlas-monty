@@ -40,5 +40,6 @@ void push(stack_t **stack, unsigned int line_number, char *arg);
 void pall(stack_t **stack);
 int val_int(const char *str);
 int is_integer(const char *str);
+void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line_number);
 
 #endif
