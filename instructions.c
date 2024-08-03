@@ -1,8 +1,8 @@
 #include "monty.h"
 #include <string.h>
 
-/* Define the instruction array named "instruction_set" */
-instruction_t instruction_set[] = {
+/* Defining the array named "instruct" */
+instruction_t instruct[] = {
     {"push", push_wrapper},
     {"pall", pall},
     {"pint", pint},
@@ -12,18 +12,17 @@ instruction_t instruction_set[] = {
     {"nop", nop},
     {NULL, NULL}
 };
-
 /**
- * push_wrapper - wrapper function to call push with an additional argument
+ * wrapper - wrapper function to call push with an additional argument
  * @stack: pointer to the head of the stack
  * @line_number: the current line number
- * This wrapper function allows push to be used in the instruction_set array.
+ * This wrapper function allows push to be used in the instruct array.
  */
-void push_wrapper(stack_t **stack, unsigned int line_number) {
-    extern char *push_arg; // Use a global variable to store the push argument
+void wrapper(stack_t **stack, unsigned int line_number)
+{
+    extern char *push_arg; /* global variable to store the push argument */
     push(stack, line_number, push_arg);
 }
-
 /**
  * exe_instruction - executes the given opcode
  * @opcode: string representing the opcode
@@ -34,14 +33,14 @@ void push_wrapper(stack_t **stack, unsigned int line_number) {
 void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line_number)
 {
     int i;
-    extern char *push_arg; // Use a global variable to store the push argument
+    extern char *push_arg; /* global variable to store the push argument */
     push_arg = arg;
 
-    for (i = 0; instruction_set[i].opcode != NULL; i++)
+    for (i = 0; instruct[i].opcode != NULL; i++)
     {
-        if (strcmp(instruction_set[i].opcode, opcode) == 0)
+        if (strcmp(instruct[i].opcode, opcode) == 0)
         {
-            instruction_set[i].f(stack, line_number);
+            instruct[i].f(stack, line_number);
             return;
         }
     }
