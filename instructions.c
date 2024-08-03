@@ -27,13 +27,13 @@ instruction_t instruct[] = {
 };
 
 /**
- * exe_instruct - executes the given opcode
+ * exe_instruction - executes the given opcode
  * @opcode: string representing the opcode
  * @arg: argument for the opcode (if any)
  * @stack: pointer to the head of the stack
  * @line_number: the current line number
  */
-void exe_instruct(char *opcode, char *arg, stack_t **stack, unsigned int line_number)
+void exe_instruction(char *opcode, char *arg, stack_t **stack, unsigned int line_number)
 {
     int i;
     push_arg = arg;

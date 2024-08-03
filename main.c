@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 
         if (opcode && opcode[0] != '#')  // Ignore empty lines and comments
         {
-            exe_instruct(opcode, arg, &stack, line_number);
+            exe_instruction(opcode, arg, &stack, line_number);
         }
     }
 
