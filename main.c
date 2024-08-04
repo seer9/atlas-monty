@@ -1,7 +1,13 @@
 #include "monty.h"
 
 char *push_arg; /* global variable to store the push argument */
-
+/**
+ * main - Entry point of the Monty interpreter
+ * @argc: Number of command-line arguments
+ * @argv: Array of command-line arguments
+ *
+ * Return: 0 on success, 1 on failure
+ */
 int main(int argc, char **argv)
 {
     stack_t *stack = NULL;
@@ -40,7 +46,10 @@ int main(int argc, char **argv)
     free_stack(stack);  // Ensure stack is freed properly
     return (0);
 }
-
+/**
+ * free_stack - Frees the memory allocated for the stack
+ * @stack: Pointer to the stack
+ */
 void free_stack(stack_t *stack)
 {
     stack_t *temp;
