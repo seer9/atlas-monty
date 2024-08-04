@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         char *opcode = strtok(line, " \t\n");
         char *arg = strtok(NULL, " \t\n");
 
-        if (opcode && opcode[0] != '#')  // Ignore empty lines and comments
+        if (opcode && opcode[0] != '#')  /* Ignore empty lines and comments */
         {
             exe_instruction(opcode, arg, &stack, line_number);
         }
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
     free(line);
     fclose(file);
-    free_stack(stack);  // Ensure stack is freed properly
+    free_stack(stack);  /* Ensure stack is freed properly */
     return (0);
 }
 /**
